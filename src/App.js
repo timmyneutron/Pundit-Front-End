@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import * as utils from "./utils"
 
 class App extends Component {
+  componentDidMount() {
+    utils.getAllPosts()
+  }
   render() {
     return (
       <div className="App">
