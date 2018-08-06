@@ -1,6 +1,6 @@
 const localApi = "http://localhost:3001"
 const remoteApi = "https://peaceful-wildwood-70891.herokuapp.com"
-const api = remoteApi
+export const api = remoteApi
 
 const token = "timisawesome"
 
