@@ -13,7 +13,7 @@ Since I have an affinity for cheesy humor, its focus is on puns, dad jokes, and 
 ## Concepts and Classes
 Concepts explored in this project:
 
-  - React, Redux, and React Router
+  - NodeJS, React, Redux, React Router
   - Bootstrap layout and design using [ReactStrap](https://reactstrap.github.io)
   - HTTP requests using the Fetch API
   - Synchronous and asyncronous action creators
@@ -35,4 +35,4 @@ To view/edit the source code:
   ```
   
 ## Other Details
-The backend was supplied by the course instructors at Udacity (and slightly modified by me). It's a basic ExpressJS server app also hosted on Heroku. Source code can be found [here](https://github.com/timmyneutron/Pundit-Back-End).
+The backend was supplied by the course instructors at Udacity (and slightly modified by me). It's a basic Express server app also hosted on Heroku. Source code can be found [here](https://github.com/timmyneutron/Pundit-Back-End).
