@@ -22,7 +22,11 @@ class Post extends Component {
 
 	editPost = (event) => {
 		event.preventDefault()
-		this.setState({ editPost: true })
+		this.setState({
+			editPost: true,
+			formTitle: this.props.title,
+			formBody: this.props.body
+		})
 	}
 
 	cancelEdit = () => {
@@ -45,6 +49,7 @@ class Post extends Component {
 				{ this.state.editPost ?
 					<div className="post-card">
 						<FormGroup>
+							<h4>Edit Post</h4>
 							<Input
 								type="text"
 								placeholder={title}

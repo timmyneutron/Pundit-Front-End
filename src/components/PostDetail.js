@@ -12,8 +12,6 @@ class PostDetail extends Component {
 		addComment: false,
 		formTitle: "",
 		formBody: "",
-		formAuthor: "",
-		formCategory: ""
 	}
 
 	componentDidMount = () => {
@@ -23,6 +21,14 @@ class PostDetail extends Component {
 
 	vote = (option) => {
 		this.props.dispatch(actions.votePost(this.props.match.params.id, option))
+	}
+
+	editPost = () => {
+		this.setState({
+			editPost: true,
+			formTitle: this.props.title,
+			formBody: this.props.body
+		})
 	}
 
 	deletePost = () => {
@@ -36,21 +42,23 @@ class PostDetail extends Component {
 	}
 
 	render() {
+		console.log(this.state.formTitle)
 		const { title, body, voteScore, author } = this.props
 		return (
 			<Container fluid className="post-detail-container">
 				<div className="post-detail-card">
 					{ this.state.editPost ?
 						<FormGroup>
+							<h3>Edit Post</h3>
 							<Input
 								type="text"
-								placeholder={title}
+								placeholder="Title..."
 								value={this.state.formTitle}
 								onChange={event => this.setState({ formTitle: event.target.value })}
 							/>
 							<Input
 								type="textarea"
-								placeholder={body}
+								placeholder="Body..."
 								value={this.state.formBody}
 								onChange={event => this.setState({ formBody: event.target.value })}
 							/>
@@ -73,7 +81,7 @@ class PostDetail extends Component {
 							</ButtonGroup>
 							<ButtonGroup className="ml-4">
 								<Button onClick={() => this.setState({ addComment: true })}>comment</Button>
-								<Button onClick={() => this.setState({ editPost: true })}>edit</Button>
+								<Button onClick={this.editPost}>edit</Button>
 								<Button onClick={this.deletePost}>delete</Button>
 							</ButtonGroup>
 						</div>
