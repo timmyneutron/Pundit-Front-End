@@ -50,7 +50,7 @@ class OptionsBar extends React.Component {
           <Navbar dark expand="sm">
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="mr-auto" navbar>
+              <Nav className="ml-auto mr-auto" navbar>
               	{this.props.categories.map(category => (
                   <NavItem key={category.name}>
                     <NavLink id="options-bar-link" onClick={() => this.filterPosts(category.path)}>{category.name}</NavLink>
