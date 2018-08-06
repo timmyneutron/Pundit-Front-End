@@ -43,6 +43,7 @@ const mapStateToProps = (state, ownProps) => {
 	}
 	
 	return {
+		categories: state.categories,
 		posts: sort(posts, parsed.sort)
 	}
 }

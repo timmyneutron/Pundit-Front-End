@@ -45,38 +45,42 @@ class OptionsBar extends React.Component {
     const sortOptions = ["voteScore", "title", "author"]
 
     return (
-      <Navbar dark expand="sm">
-        <NavbarToggler onClick={this.toggle} />
-        <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-          	{this.props.categories.map(category => (
-              <NavItem key={category.name}>
-                <NavLink onClick={() => this.filterPosts(category.path)}>{category.name}</NavLink>
-              </NavItem>
-          	))}
-            <NavItem>
-              <NavLink onClick={() => this.props.addPost()}>add post</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                sort by...
-              </DropdownToggle>
-              <DropdownMenu>
-              { sortOptions.map(option => (
-                (option === parsed.sort || option === "voteScore" && !parsed.sort) ?
-                <DropdownItem key={option} className="active" onClick={() => this.sortPosts(option)}>
-                  {option}
-                </DropdownItem>
-                :
-                <DropdownItem key={option} onClick={() => this.sortPosts(option)}>
-                  {option}
-                </DropdownItem>
-              ))}
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
-        </Collapse>
-      </Navbar>
+      <div>
+        { this.props.categories.length > 0 &&
+          <Navbar dark expand="sm">
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="mr-auto" navbar>
+              	{this.props.categories.map(category => (
+                  <NavItem key={category.name}>
+                    <NavLink onClick={() => this.filterPosts(category.path)}>{category.name}</NavLink>
+                  </NavItem>
+              	))}
+                <NavItem>
+                  <NavLink onClick={() => this.props.addPost()}>add post</NavLink>
+                </NavItem>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    sort by...
+                  </DropdownToggle>
+                  <DropdownMenu>
+                  { sortOptions.map(option => (
+                    (option === parsed.sort || option === "voteScore" && !parsed.sort) ?
+                    <DropdownItem key={option} className="active" onClick={() => this.sortPosts(option)}>
+                      {option}
+                    </DropdownItem>
+                    :
+                    <DropdownItem key={option} onClick={() => this.sortPosts(option)}>
+                      {option}
+                    </DropdownItem>
+                  ))}
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </Nav>
+            </Collapse>
+          </Navbar>
+        }
+      </div>
     );
   }
 }

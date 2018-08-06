@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, withRouter } from "react-router-dom"
+import { connect } from "react-redux"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import FrontPage from "./components/FrontPage"
@@ -16,10 +17,16 @@ class App extends Component {
           <Route exact path="/:category" component={FrontPage} />
           <Route exact path="/:category/:id" component={PostDetail} />
         </Switch>
-        <Footer />
+        { this.props.posts.length > 0 && <Footer /> }
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    posts: state.posts
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(App));
