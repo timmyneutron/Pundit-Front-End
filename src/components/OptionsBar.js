@@ -53,14 +53,14 @@ class OptionsBar extends React.Component {
               <Nav className="mr-auto" navbar>
               	{this.props.categories.map(category => (
                   <NavItem key={category.name}>
-                    <NavLink onClick={() => this.filterPosts(category.path)}>{category.name}</NavLink>
+                    <NavLink id="options-bar-link" onClick={() => this.filterPosts(category.path)}>{category.name}</NavLink>
                   </NavItem>
               	))}
                 <NavItem>
-                  <NavLink onClick={() => this.props.addPost()}>add post</NavLink>
+                  <NavLink id="options-bar-link" onClick={() => this.props.addPost()}>add post</NavLink>
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
-                  <DropdownToggle nav caret>
+                  <DropdownToggle nav caret id="options-bar-link">
                     sort by...
                   </DropdownToggle>
                   <DropdownMenu>

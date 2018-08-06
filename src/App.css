@@ -64,12 +64,12 @@
   background-color: grey;
 }
 
-.navbar-dark .navbar-nav a.nav-link {
+#options-bar-link {
   color: white;
   cursor: pointer;
   font-size: 20px
 }
-.navbar-dark .navbar-nav a.nav-link:hover {
+#options-bar-link:hover {
   color: lightblue;
 }
 
