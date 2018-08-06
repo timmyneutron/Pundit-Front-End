@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import * as utils from "./utils"
+import React, { Component } from 'react'
+import { Route, Switch } from "react-router-dom"
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import FrontPage from "./components/FrontPage"
+import PostDetail from "./components/PostDetail"
+import './App.css'
 
 class App extends Component {
-  componentDidMount() {
-    utils.getAllPosts()
-  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={FrontPage} />
+          <Route exact path="/:category" component={FrontPage} />
+          <Route exact path="/:category/:id" component={PostDetail} />
+        </Switch>
+        <Footer />
       </div>
     );
   }

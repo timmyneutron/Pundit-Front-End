@@ -1,28 +1,140 @@
 .App {
-  text-align: center;
+  padding-top: 115px;
+  min-height: 100vh;
+  height: 100%;
+  font-family: Helvetica;
+  background-color: lightblue;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.fixed-header {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: white;
+  padding: .5em;
+  box-shadow: 0px 4px 10px grey;
+  z-index: 1000;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.site-title {
+  color: black;
+}
+
+.site-title:hover {
+  color: grey;
+}
+
+.site-subtitle {
+  color: black;
+  font-style: italic;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 450px) {
+  .site-subtitle {
+    display: none;
+  }
+  .App {
+    padding-top: 90px;
+  }
+  .site-title {
+    text-align: center
+  }
+}
+
+.front-page-container {
+  max-width: 570px;
+  margin-bottom: 20px;
+}
+
+.post-detail-container {
+  max-width: 650px;
+  margin-bottom: 20px;
+}
+
+.post-detail-body {
+  font-style: italic;
+  font-size: 18px
+}
+
+.navbar {
+  border-radius: 15px;
+  box-shadow: 4px 4px 10px;
+  background-color: grey;
+}
+
+.navbar-dark .navbar-nav a.nav-link {
   color: white;
+  cursor: pointer;
+  font-size: 20px
+}
+.navbar-dark .navbar-nav a.nav-link:hover {
+  color: lightblue;
 }
 
-.App-title {
-  font-size: 1.5em;
+.dropdown-item {
+  cursor: pointer;
 }
 
-.App-intro {
-  font-size: large;
+.post-card,
+.post-detail-card{
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-radius: 15px;
+  margin-top: 20px;
+  padding: 20px;
+  box-shadow: 4px 4px 10px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.comment-card,
+.comment-list-title {
+  margin-right: auto;
+  background-color: white;
+  border-radius: 15px;
+  margin-top: 20px;
+  padding: 20px;
+  box-shadow: 4px 4px 10px;
+}
+
+.post {
+  color: black;
+}
+
+.post:hover {
+  text-decoration: none;
+  color: darkblue;
+}
+.comment-body,
+.comment-score,
+.comment-author {
+  margin-bottom: 0px;
+}
+
+.comment-body {
+  font-style: italic;
+}
+
+.form-control {
+  margin-bottom: 15px;
+}
+
+.app-footer {
+  margin-bottom: 5px
+}
+
+hr.footer-hr {
+  margin: 0px;
+  margin: 0 5% 5px 5%;
+}
+
+.footer-text {
+  margin: 0 5%;
+  color: grey;
+  font-style: italic;
+}
+
+.form-warning {
+  color: red;
 }
