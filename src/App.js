@@ -8,6 +8,18 @@ import PostDetail from "./components/PostDetail"
 import './App.css'
 
 class App extends Component {
+  renderFooter = () => {
+    if (this.props.posts.length === 0) {
+      return false
+    }
+
+    if (this.props.posts.length === 1 && this.props.comments.length === 0) {
+      return false
+    }
+
+    return true
+  }
+
   render() {
     return (
       <div className="App">
@@ -17,7 +29,7 @@ class App extends Component {
           <Route exact path="/:category" component={FrontPage} />
           <Route exact path="/:category/:id" component={PostDetail} />
         </Switch>
-        { this.props.posts.length > 0 && <Footer /> }
+        { this.renderFooter() && <Footer /> }
       </div>
     );
   }
@@ -25,7 +37,8 @@ class App extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    posts: state.posts
+    posts: state.posts,
+    comments: state.comments
   }
 }
 
