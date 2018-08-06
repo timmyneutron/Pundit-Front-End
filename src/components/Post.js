@@ -1,10 +1,16 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
-import { Button, ButtonGroup } from "reactstrap"
+import { Button, ButtonGroup, FormGroup, Input } from "reactstrap"
 import * as actions from "../actions"
 
 class Post extends Component {
+	state = {
+		editPost: false,
+		formTitle: "",
+		formBody: ""
+	}
+
 	vote = (event, option) => {
 		event.preventDefault()
 		if (option === "up") {
@@ -14,21 +20,70 @@ class Post extends Component {
 		}
 	}
 
+	editPost = (event) => {
+		event.preventDefault()
+		this.setState({ editPost: true })
+	}
+
+	cancelEdit = () => {
+		this.setState({ editPost: false })
+	}
+
+	deletePost = (event) => {
+		event.preventDefault()
+		this.props.dispatch(actions.deletePost(this.props.id))
+	}
+
+	submitForm = () => {
+		this.props.dispatch(actions.editPost(this.props.id, this.state.formTitle, this.state.formBody))
+	}
+
 	render() {
-		const { id, category, title, author, voteScore, commentCount } = this.props
+		const { id, category, title, author, voteScore, commentCount, body } = this.props
 		return (
-			<Link to={`/${category}/${id}`} className="post">
-				<div className="post-card">
-					<h4>{title}</h4>
-					<h5>by {author}</h5>
-					<h5>voteScore: {voteScore}</h5>
-					<h5>comments: {commentCount}</h5>
-					<ButtonGroup>
-						<Button onClick={event => this.vote(event, "up")}>↑</Button>
-						<Button onClick={event => this.vote(event, "down")}>↓</Button>
-					</ButtonGroup>
-				</div>
-			</Link>
+			<div>
+				{ this.state.editPost ?
+					<div className="post-card">
+						<FormGroup>
+							<Input
+								type="text"
+								placeholder={title}
+								value={this.state.formTitle}
+								onChange={event => this.setState({ formTitle: event.target.value })}
+							/>
+							<Input
+								type="textarea"
+								placeholder={body}
+								value={this.state.formBody}
+								onChange={event => this.setState({ formBody: event.target.value })}
+							/>						</FormGroup>
+						<h5>by {author}</h5>
+						<h5>voteScore: {voteScore}</h5>
+						<h5>comments: {commentCount}</h5>
+						<ButtonGroup>
+							<Button onClick={this.submitForm}>submit</Button>
+							<Button onClick={this.cancelEdit}>cancel</Button>
+						</ButtonGroup>
+					</div>		
+					:
+					<Link to={`/${category}/${id}`} className="post">
+						<div className="post-card">
+							<h4>{title}</h4>
+							<h5>by {author}</h5>
+							<h5>voteScore: {voteScore}</h5>
+							<h5>comments: {commentCount}</h5>
+							<ButtonGroup>
+								<Button onClick={event => this.vote(event, "up")}>↑</Button>
+								<Button onClick={event => this.vote(event, "down")}>↓</Button>
+							</ButtonGroup>
+							<ButtonGroup className="ml-4">
+								<Button onClick={this.editPost}>edit</Button>
+								<Button onClick={this.deletePost}>delete</Button>
+							</ButtonGroup>
+						</div>
+					</Link>
+				}
+			</div>
 		)
 	}
 }

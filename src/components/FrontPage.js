@@ -33,13 +33,15 @@ class FrontPage extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+	let posts = state.posts.filter(post => !post.deleted)
+
 	const parsed = queryString.parse(ownProps.location.search)
 	const filterCategory = ownProps.match.params.category
-	let posts = state.posts;
 
 	if (filterCategory) {
 		posts = posts.filter(post => post.category === filterCategory)
 	}
+	
 	return {
 		posts: sort(posts, parsed.sort)
 	}
