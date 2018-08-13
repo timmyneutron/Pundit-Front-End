@@ -15,7 +15,6 @@ class AddComment extends Component {
 			this.setState({ showWarning: true })
 			return
 		}
-		
 		this.props.dispatch(actions.addComment(this.state.formBody, this.state.formAuthor, this.props.parentId))
 		this.props.clearForm()
 	}

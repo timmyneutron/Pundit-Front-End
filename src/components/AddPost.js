@@ -46,7 +46,7 @@ class AddPost extends Component {
 					>
 						<option disabled selected>Category...</option>
 						{ this.props.categories.map(category => (
-							<option key={category.name}>{category.name}</option>
+							<option key={category.name}>{category.path}</option>
 						))}
 					</Input>
 					<Input

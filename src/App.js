@@ -27,7 +27,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={FrontPage} />
           <Route exact path="/:category" component={FrontPage} />
-          <Route exact path="/:category/:id" component={PostDetail} />
+          <Route exact path="/:category/:_id" component={PostDetail} />
         </Switch>
         { this.renderFooter() && <Footer /> }
       </div>

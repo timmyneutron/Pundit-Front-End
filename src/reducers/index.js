@@ -13,16 +13,15 @@ function categories(state=[], action) {
 }
 
 function posts(state=[], action) {
-	let newState;
+	let newState
 
 	switch (action.type) {
-
 		case actions.RECEIVE_POSTS :
 			return action.posts
 
 		case actions.RECEIVE_SINGLE_POST :
 			newState = state.slice(0)
-			const ind = newState.findIndex(post => post.id === action.post.id)
+			const ind = newState.findIndex(post => post._id === action.post._id)
 			if (ind === -1) {
 				newState.push(action.post)
 			} else {
@@ -30,26 +29,36 @@ function posts(state=[], action) {
 			}
 			return newState
 
+		case actions.DELETE_POST :
+			newState = state.slice(0)
+			return newState.filter(post => post._id !== action._id)
+
 		default :
 			return state
 	}
 }
 
 function comments(state=[], action) {
+	let newState
+
 	switch (action.type) {
 
 		case actions.RECEIVE_COMMENTS :
 			return action.comments
 
 		case actions.RECEIVE_SINGLE_COMMENT :
-			let newState = state.slice(0)
-			const ind = newState.findIndex(comment => comment.id === action.comment.id)
+			newState = state.slice(0)
+			const ind = newState.findIndex(comment => comment._id === action.comment._id)
 			if (ind === -1) {
 				newState.push(action.comment)
 			} else {
 				newState[ind] = action.comment
 			}
 			return newState
+
+		case actions.DELETE_COMMENT :
+			newState = state.slice(0)
+			return newState.filter(comment => comment._id !== action._id)
 
 		default :
 			return state

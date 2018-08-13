@@ -10,17 +10,16 @@ class Comment extends Component {
 	}
 
 	vote = (event, option) => {
-		this.props.dispatch(actions.voteComment(this.props.id, option))
+		this.props.dispatch(actions.voteComment(this.props._id, option))
 	}
 
 	submitForm = () => {
-		this.props.dispatch(actions.editComment(this.props.id, this.state.formBody))
+		this.props.dispatch(actions.editComment(this.props._id, this.state.formBody))
 		this.setState({ editComment: false, formBody: ""})
 	}
 
 	deleteComment = () => {
-		console.log("foo")
-		this.props.dispatch(actions.deleteComment(this.props.id))
+		this.props.dispatch(actions.deleteComment(this.props._id))
 	}
 
 	render() {

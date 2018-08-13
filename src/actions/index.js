@@ -4,8 +4,10 @@ import * as utils from "../utils"
 export const RECEIVE_CATEGORIES = "RECEIVE_CATEGORIES"
 export const RECEIVE_POSTS = "RECEIVE_POSTS"
 export const RECEIVE_SINGLE_POST = "RECEIVE_SINGLE_POST"
+export const DELETE_POST = "DELETE_POST"
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS"
 export const RECEIVE_SINGLE_COMMENT = "RECEIVE_SINGLE_COMMENT"
+export const DELETE_COMMENT = "DELETE_COMMENT"
 
 // updates state with new categories list
 export const receiveCategories = (categories) => {
@@ -52,24 +54,36 @@ export const addPost = (title, body, author, category) => (dispatch) =>
   .then(post => dispatch(receiveSinglePost(post)))
 
 // gets a single post from the API
-export const fetchSinglePost = (id) => (dispatch) =>
-  utils.getPost(id)
+export const fetchSinglePost = (_id) => (dispatch) =>
+  utils.getPost(_id)
   .then(post => dispatch(receiveSinglePost(post)))
 
 // votes on a post
-export const votePost = (id, option) => (dispatch) =>
-  utils.votePost(id, option)
+export const votePost = (_id, option) => (dispatch) =>
+  utils.votePost(_id, option)
   .then(post => dispatch(receiveSinglePost(post)))
 
 // edits a post
-export const editPost = (id, title, body) => (dispatch) =>
-  utils.editPost(id, title, body)
+export const editPost = (_id, title, body) => (dispatch) =>
+  utils.editPost(_id, title, body)
   .then(post => dispatch(receiveSinglePost(post)))
 
+// deletes a post locally
+const deletePostLocal = (_id) => (dispatch) => {
+  return {
+    type: DELETE_POST,
+    _id
+  }
+}
+
 // deletes a post on the API
-export const deletePost = (id) => (dispatch) =>
-  utils.deletePost(id)
-  .then(post => dispatch(receiveSinglePost(post)))
+export const deletePost = (_id) => (dispatch) =>
+  utils.deletePost(_id)
+  .then(result => {
+    if (result.ok) {
+      return dispatch(deletePostLocal(_id))
+    }
+  })
 
 // updates the state with new comments list
 export const receiveComments = (comments) => {
@@ -93,8 +107,8 @@ export const fetchComments = (postId) => (dispatch) =>
   .then(comments => dispatch(receiveComments(comments)))
 
 // gets a single comment from the API
-export const fetchSingleComment = (id) => (dispatch) =>
-  utils.getSingleComment(id)
+export const fetchSingleComment = (_id) => (dispatch) =>
+  utils.getSingleComment(_id)
   .then(comment => dispatch(receiveSingleComment(comment)))
 
 // adds a comment
@@ -103,16 +117,29 @@ export const addComment = (body, author, parentId) => (dispatch) =>
   .then(comment => dispatch(receiveSingleComment(comment)))
 
 // votes on a comment
-export const voteComment = (id, option) => (dispatch) =>
-  utils.voteComment(id, option)
+export const voteComment = (_id, option) => (dispatch) =>
+  utils.voteComment(_id, option)
   .then(comment => dispatch(receiveSingleComment(comment)))
 
 // edits a comment
-export const editComment = (id, body) => (dispatch) =>
-  utils.editComment(id, body)
+export const editComment = (_id, body) => (dispatch) =>
+  utils.editComment(_id, body)
   .then(comment => dispatch(receiveSingleComment(comment)))
 
+// deletes a comment locally
+const deleteCommentLocal = (_id) => {
+  return {
+    type: DELETE_COMMENT,
+    _id
+  }
+}
+
 // deletes a comment
-export const deleteComment = (id) => (dispatch) =>
-  utils.deleteComment(id)
-  .then(comment => dispatch(receiveSingleComment(comment)))
+export const deleteComment = (_id) => (dispatch) =>
+  utils.deleteComment(_id)
+  // .then(comment => dispatch(receiveSingleComment(comment)))
+  .then(result => {
+    if (result.ok) {
+      return dispatch(deleteCommentLocal(result._id))
+    }
+  })

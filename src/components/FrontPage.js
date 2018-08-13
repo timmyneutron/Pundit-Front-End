@@ -16,7 +16,12 @@ class FrontPage extends Component {
 	}
 
 	componentDidMount = () => {
-		this.props.dispatch(actions.fetchAllPosts())
+		const { category } = this.props.match.params
+		if (category) {
+			this.props.dispatch(actions.fetchCategoryPosts(category))
+		} else {
+			this.props.dispatch(actions.fetchAllPosts())	
+		}
 	}
 
 	render() {
@@ -25,7 +30,7 @@ class FrontPage extends Component {
 				<OptionsBar addPost={() => this.setState({ addPost: true })} />
 				{this.state.addPost && <AddPost clearForm={() => this.setState({ addPost: false })} />}
 				{this.props.posts.map(post => (
-					<Post key={post.id} {...post} />
+					<Post key={post._id} {...post} />
 				))}
 			</Container>
 		)

@@ -14,9 +14,9 @@ class Post extends Component {
 	vote = (event, option) => {
 		event.preventDefault()
 		if (option === "up") {
-			this.props.dispatch(actions.votePost(this.props.id, "upVote"))
+			this.props.dispatch(actions.votePost(this.props._id, "upVote"))
 		} else {
-			this.props.dispatch(actions.votePost(this.props.id, "downVote"))
+			this.props.dispatch(actions.votePost(this.props._id, "downVote"))
 		}
 	}
 
@@ -35,15 +35,17 @@ class Post extends Component {
 
 	deletePost = (event) => {
 		event.preventDefault()
-		this.props.dispatch(actions.deletePost(this.props.id))
+		this.props.dispatch(actions.deletePost(this.props._id))
+		window.location.href = window.location.href
 	}
 
 	submitForm = () => {
-		this.props.dispatch(actions.editPost(this.props.id, this.state.formTitle, this.state.formBody))
+		this.props.dispatch(actions.editPost(this.props._id, this.state.formTitle, this.state.formBody))
+		this.setState({ editPost: false })
 	}
 
 	render() {
-		const { id, category, title, author, voteScore, commentCount, body } = this.props
+		const { _id, category, title, author, voteScore, commentCount, body } = this.props
 		return (
 			<div>
 				{ this.state.editPost ?
@@ -71,7 +73,7 @@ class Post extends Component {
 						</ButtonGroup>
 					</div>		
 					:
-					<Link to={`/${category}/${id}`} className="post">
+					<Link to={`/${category}/${_id}`} className="post">
 						<div className="post-card">
 							<h4>{title}</h4>
 							<h5>by {author}</h5>

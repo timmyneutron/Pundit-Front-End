@@ -6,15 +6,10 @@
   background-color: lightblue;
 }
 
-.fixed-header {
-  width: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
+.fixed-top {
   background-color: white;
   padding: .5em;
   box-shadow: 0px 4px 10px grey;
-  z-index: 1000;
 }
 
 .site-title {
@@ -137,4 +132,15 @@ hr.footer-hr {
 
 .form-warning {
   color: red;
+}
+
+.login-container {
+  background-color: white;
+  height: 500px;
+  width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 20px;
+  box-shadow: 4px 4px 10px grey;
+  padding: 25px 40px;
 }
