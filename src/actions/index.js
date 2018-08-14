@@ -136,6 +136,6 @@ export const deleteComment = (_id) => (dispatch) =>
   // .then(comment => dispatch(receiveSingleComment(comment)))
   .then(result => {
     if (result.ok) {
-      return dispatch(deleteCommentLocal(result._id))
+      return dispatch(deleteCommentLocal(_id))
     }
   })
