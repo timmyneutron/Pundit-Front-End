@@ -18,7 +18,9 @@ Concepts explored in this project:
   - HTTP requests using the Fetch API
   - Synchronous and asyncronous action creators
   - Functional programming and reducers
-  - Hosting using [Heroku](https://www.heroku.com)
+  - Back end server using Express
+  - Storing/querying data using MongoDB and Mongoose
+  - Hosting on [Heroku](https://www.heroku.com)
 
 ## Getting Started
 The project is hosted at [http://pundit.timabrahamsen.com](http://pundit.timabrahamsen.com).
@@ -35,4 +37,4 @@ To view/edit the source code:
   ```
   
 ## Other Details
-The backend was supplied by the course instructors at Udacity (and slightly modified by me). It's a basic Express server app also hosted on Heroku. Source code can be found [here](https://github.com/timmyneutron/Pundit-Back-End).
+The back end is based off of starter code supplied by the instructors at Udacity ([link](https://github.com/timmyneutron/ReactND-Readable-Back-End)). It maintains the original endpoints from the starter code, with modifications to integrate a MongoDB database.
