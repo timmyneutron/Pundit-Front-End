@@ -15,7 +15,7 @@ class FrontPage extends Component {
 		addPost: false
 	}
 
-	componentDidMount = () => {
+	componentWillReceiveProps = () => {
 		if (this.props.match.params.category) {
 			this.props.dispatch(actions.fetchCategoryPosts(this.props.match.params.category))
 		} else {
