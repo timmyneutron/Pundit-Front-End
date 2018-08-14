@@ -37,4 +37,4 @@ To view/edit the source code:
   ```
   
 ## Other Details
-The back end is based off of starter code supplied by the instructors at Udacity ([link](https://github.com/timmyneutron/ReactND-Readable-Back-End)). It maintains the original endpoints from the starter code, with modifications to integrate a MongoDB database.
+The back end is based off of starter code supplied by the instructors at Udacity ([link](https://github.com/udacity/reactnd-project-readable-starter)). It maintains the original endpoints from the starter code, with modifications to integrate a MongoDB database.
