@@ -16,11 +16,10 @@ class FrontPage extends Component {
 	}
 
 	componentDidMount = () => {
-		const { category } = this.props.match.params
-		if (category) {
-			this.props.dispatch(actions.fetchCategoryPosts(category))
+		if (this.props.match.params.category) {
+			this.props.dispatch(actions.fetchCategoryPosts(this.props.match.params.category))
 		} else {
-			this.props.dispatch(actions.fetchAllPosts())	
+			this.props.dispatch(actions.fetchAllPosts())
 		}
 	}
 
@@ -38,18 +37,10 @@ class FrontPage extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-	let posts = state.posts.filter(post => !post.deleted)
-
 	const parsed = queryString.parse(ownProps.location.search)
-	const filterCategory = ownProps.match.params.category
-
-	if (filterCategory) {
-		posts = posts.filter(post => post.category === filterCategory)
-	}
-	
 	return {
 		categories: state.categories,
-		posts: sort(posts, parsed.sort)
+		posts: sort(state.posts, parsed.sort)
 	}
 }
 
