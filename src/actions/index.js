@@ -69,7 +69,7 @@ export const editPost = (_id, title, body) => (dispatch) =>
   .then(post => dispatch(receiveSinglePost(post)))
 
 // deletes a post locally
-const deletePostLocal = (_id) => (dispatch) => {
+const deletePostLocal = (_id) => {
   return {
     type: DELETE_POST,
     _id
@@ -79,11 +79,7 @@ const deletePostLocal = (_id) => (dispatch) => {
 // deletes a post on the API
 export const deletePost = (_id) => (dispatch) =>
   utils.deletePost(_id)
-  .then(result => {
-    if (result.ok) {
-      return dispatch(deletePostLocal(_id))
-    }
-  })
+  .then(response => dispatch(deletePostLocal(_id)))
 
 // updates the state with new comments list
 export const receiveComments = (comments) => {

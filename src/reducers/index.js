@@ -13,7 +13,7 @@ function categories(state=[], action) {
 }
 
 function posts(state=[], action) {
-	let newState
+	let newState, ind
 
 	switch (action.type) {
 		case actions.RECEIVE_POSTS :
@@ -21,7 +21,7 @@ function posts(state=[], action) {
 
 		case actions.RECEIVE_SINGLE_POST :
 			newState = state.slice(0)
-			const ind = newState.findIndex(post => post._id === action.post._id)
+			ind = newState.findIndex(post => post._id === action.post._id)
 			if (ind === -1) {
 				newState.push(action.post)
 			} else {

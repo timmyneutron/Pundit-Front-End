@@ -35,9 +35,8 @@ class Post extends Component {
 
 	deletePost = (event) => {
 		event.preventDefault()
-		console.log(this.props._id)
 		this.props.dispatch(actions.deletePost(this.props._id))
-		window.location.href = window.location.href
+		this.forceUpdate()
 	}
 
 	submitForm = () => {

@@ -73,7 +73,7 @@ class PostDetail extends Component {
 							<h3 className="post-detail-title">{title}</h3>
 							<p className="post-detail-body">{body}</p>
 							<h5>by {author}</h5>
-							<h5>score: {score}</h5>
+							<h5>voteScore: {voteScore}</h5>
 							<ButtonGroup>
 								<Button onClick={() => this.vote("upVote")}>↑</Button>
 								<Button onClick={() => this.vote("downVote")}>↓</Button>
@@ -100,7 +100,7 @@ class PostDetail extends Component {
 
 const mapStateToProps = (state, ownProps) => {
 	const post = state.posts.find(post => post._id === ownProps.match.params._id)
-	comments = sort(state.comments)
+	const comments = sort(state.comments)
 	return {
 		...post,
 		comments

@@ -38,9 +38,10 @@ class FrontPage extends Component {
 
 const mapStateToProps = (state, ownProps) => {
 	const parsed = queryString.parse(ownProps.location.search)
+	const posts = state.posts.slice(0)
 	return {
 		categories: state.categories,
-		posts: sort(state.posts, parsed.sort)
+		posts: sort(posts, parsed.sort)
 	}
 }
 
