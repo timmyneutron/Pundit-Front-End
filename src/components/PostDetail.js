@@ -42,7 +42,7 @@ class PostDetail extends Component {
 	}
 
 	render() {
-		const { title, body, score, author } = this.props
+		const { title, body, voteScore, author } = this.props
 		return (
 			<Container fluid className="post-detail-container">
 				<div className="post-detail-card">
@@ -62,7 +62,7 @@ class PostDetail extends Component {
 								onChange={event => this.setState({ formBody: event.target.value })}
 							/>
 							<h5>by {author}</h5>
-							<h5>score: {score}</h5>
+							<h5>voteScore: {voteScore}</h5>
 							<ButtonGroup>
 								<Button onClick={this.submitForm}>submit</Button>
 								<Button onClick={() => this.setState({ editPost: false })}>cancel</Button>
@@ -100,8 +100,7 @@ class PostDetail extends Component {
 
 const mapStateToProps = (state, ownProps) => {
 	const post = state.posts.find(post => post._id === ownProps.match.params._id)
-	let comments = state.comments.filter(comment => !comment.deleted)
-	comments = sort(comments)
+	comments = sort(state.comments)
 	return {
 		...post,
 		comments
