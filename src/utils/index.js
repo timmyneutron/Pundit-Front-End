@@ -2,7 +2,7 @@ const localApi = "http://localhost:3001"
 const currentApi = "https://peaceful-wildwood-70891.herokuapp.com"
 const mongoApi = "https://protected-sierra-79444.herokuapp.com"
 
-export const api = mongoApi
+export const api = localApi
 
 const token = "timisawesome"
 

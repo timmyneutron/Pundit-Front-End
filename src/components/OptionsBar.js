@@ -30,9 +30,9 @@ class OptionsBar extends React.Component {
     });
   }
 
-  filterPosts = (category) => {
+  filterPosts = (category = '') => {
     const qs = window.location.search === "" ? "" : `${window.location.search}`
-    window.location.href = `${window.location.origin}/${category}${qs}`
+    return `${window.location.origin}/${category}${qs}`
   }
 
   sortPosts = (option) => {
@@ -52,11 +52,11 @@ class OptionsBar extends React.Component {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto mr-auto" navbar>
                 <NavItem>
-                  <NavLink id="options-bar-link" onClick={() => this.filterPosts('')}>all</NavLink>
+                  <NavLink id="options-bar-link" href={this.filterPosts()}>all</NavLink>
                 </NavItem>
               	{this.props.categories.map(category => (
                   <NavItem key={category.name}>
-                    <NavLink id="options-bar-link" onClick={() => this.filterPosts(category.path)}>{category.name}</NavLink>
+                    <NavLink id="options-bar-link" href={this.filterPosts(category.path)}>{category.name}</NavLink>
                   </NavItem>
               	))}
                 <NavItem>
