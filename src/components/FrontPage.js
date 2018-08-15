@@ -26,7 +26,7 @@ class FrontPage extends Component {
 	render() {
 		return (
 			<Container fluid className="front-page-container">
-				<OptionsBar addPost={() => this.setState({ addPost: true })} />
+				<OptionsBar history={this.props.history} addPost={() => this.setState({ addPost: true })} />
 				{this.state.addPost && <AddPost clearForm={() => this.setState({ addPost: false })} />}
 				{this.props.posts.map(post => (
 					<Post key={post._id} {...post} />
