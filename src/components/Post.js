@@ -78,7 +78,6 @@ class Post extends Component {
 							<h4>{title}</h4>
 							<h5>by {author}</h5>
 							<h5>voteScore: {voteScore}</h5>
-							{/*<h5>comments: {commentCount}</h5>*/}
 							<ButtonGroup>
 								<Button onClick={event => this.vote(event, "up")}>↑</Button>
 								<Button onClick={event => this.vote(event, "down")}>↓</Button>

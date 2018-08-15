@@ -133,9 +133,4 @@ const deleteCommentLocal = (_id) => {
 // deletes a comment
 export const deleteComment = (_id) => (dispatch) =>
   utils.deleteComment(_id)
-  // .then(comment => dispatch(receiveSingleComment(comment)))
-  .then(result => {
-    if (result.ok) {
-      return dispatch(deleteCommentLocal(_id))
-    }
-  })
+  .then(comment => dispatch(deleteCommentLocal(comment._id)))
