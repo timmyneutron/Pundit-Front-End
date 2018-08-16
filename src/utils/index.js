@@ -1,8 +1,8 @@
-const localApi = "http://localhost:3001"
-const currentApi = "https://peaceful-wildwood-70891.herokuapp.com"
-const mongoApi = "https://protected-sierra-79444.herokuapp.com"
+require('dotenv').config()
+const remoteURL = "https://protected-sierra-79444.herokuapp.com"
+const localURL = "http://localhost:3001"
 
-export const api = mongoApi
+export const api = process.env.USE_REMOTE_BACKEND === 'true' ? remoteURL : localURL
 
 const token = "timisawesome"
 
