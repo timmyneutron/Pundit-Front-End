@@ -1,8 +1,7 @@
-require('dotenv').config()
 const remoteURL = "https://protected-sierra-79444.herokuapp.com"
 const localURL = "http://localhost:3001"
 
-export const api = process.env.USE_REMOTE_BACKEND === 'true' ? remoteURL : localURL
+export const api = remoteURL
 
 const token = "timisawesome"
 
