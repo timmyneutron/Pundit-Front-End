@@ -23,7 +23,7 @@ Concepts explored in this project:
   - Hosting on [Heroku](https://www.heroku.com)
 
 ## Getting Started
-The project is hosted at [http://pundit.timabrahamsen.com](http://pundit.timabrahamsen.com).
+The project is hosted at [http://pundit.timabrahamsen.com](https://pundit.timabrahamsen.com).
 
 To view/edit the source code:
 
