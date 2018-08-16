@@ -42,9 +42,10 @@ class AddPost extends Component {
 					/>
 					<Input
 						type="select"
+						defaultValue="Category..."
 						onChange={(event) => this.setState({ formCategory: event.target.value })}
 					>
-						<option disabled selected>Category...</option>
+						<option disabled>Category...</option>
 						{ this.props.categories.map(category => (
 							<option key={category.name}>{category.path}</option>
 						))}
