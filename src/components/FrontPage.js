@@ -35,11 +35,17 @@ class FrontPage extends Component {
 	}
 
 	render() {
+		const parsedQueryString = queryString.parse(this.props.location.search)
+		const posts = sort(this.props.posts, parsedQueryString.sort)
+
 		return (
 			<Container fluid className="front-page-container">
-				<OptionsBar history={this.props.history} addPost={() => this.setState({ addPost: true })} />
+				<OptionsBar
+					history={this.props.history}
+					addPost={() => this.setState({ addPost: true })}
+				/>
 				{this.state.addPost && <AddPost clearForm={() => this.setState({ addPost: false })} />}
-				{this.props.posts.map(post => (
+				{posts.map(post => (
 					<Post key={post._id} {...post} />
 				))}
 			</Container>
@@ -48,11 +54,9 @@ class FrontPage extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-	const parsed = queryString.parse(ownProps.location.search)
-	const posts = state.posts.slice(0)
 	return {
 		categories: state.categories,
-		posts: sort(posts, parsed.sort)
+		posts: state.posts
 	}
 }
 

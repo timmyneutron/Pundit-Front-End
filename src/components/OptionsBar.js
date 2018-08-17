@@ -34,8 +34,8 @@ class OptionsBar extends React.Component {
     this.props.history.push({ pathname })
   }
 
-  sortPosts = (search = 'voteScore') => {
-    this.props.history.push({ search })
+  sortPosts = (sortOption) => {
+    this.props.history.push({ search: queryString.stringify({ sort: sortOption })})
   }
 
   render() {
