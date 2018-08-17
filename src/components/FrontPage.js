@@ -16,21 +16,21 @@ class FrontPage extends Component {
 	}
 
 	componentDidMount = (prevProps) => {
-			if (this.props.match.params.category) {
-				this.props.dispatch(actions.fetchCategoryPosts(this.props.match.params.category))
-			} else {
-				this.props.dispatch(actions.fetchAllPosts())
-			}
+		this.getPosts()
 	}
 
 	componentDidUpdate = (prevProps) => {
 		if (prevProps.location.pathname !== this.props.location.pathname ||
 			  prevProps.location.search !== this.props.location.search) {
-			if (this.props.match.params.category) {
-				this.props.dispatch(actions.fetchCategoryPosts(this.props.match.params.category))
-			} else {
-				this.props.dispatch(actions.fetchAllPosts())
-			}
+				this.getPosts()
+		}
+	}
+
+	getPosts = () => {
+		if (this.props.match.params.category) {
+			this.props.dispatch(actions.fetchCategoryPosts(this.props.match.params.category))
+		} else {
+			this.props.dispatch(actions.fetchAllPosts())
 		}
 	}
 

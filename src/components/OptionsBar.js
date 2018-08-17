@@ -30,16 +30,12 @@ class OptionsBar extends React.Component {
     });
   }
 
-  filterPosts = (filterCategory = '') => {
-    const { search } = this.props.history.location
-    const pathname = `/${filterCategory}`
-
-    this.props.history.push({ pathname, search })
+  filterPosts = (pathname = '') => {
+    this.props.history.push({ pathname })
   }
 
-  sortPosts = (option) => {
-    const qs = queryString.stringify({ sort: option })
-    window.location.search = `?${qs}`
+  sortPosts = (search = 'voteScore') => {
+    this.props.history.push({ search })
   }
 
   render() {
