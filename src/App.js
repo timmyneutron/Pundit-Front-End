@@ -8,18 +8,6 @@ import PostDetail from "./components/PostDetail"
 import './App.css'
 
 class App extends Component {
-  renderFooter = () => {
-    if (this.props.posts.length === 0) {
-      return false
-    }
-
-    if (this.props.posts.length === 1 && this.props.comments.length === 0) {
-      return false
-    }
-
-    return true
-  }
-
   render() {
     return (
       <div className="App">
@@ -29,7 +17,7 @@ class App extends Component {
           <Route exact path="/:category" component={FrontPage} />
           <Route exact path="/:category/:_id" component={PostDetail} />
         </Switch>
-        { this.renderFooter() && <Footer /> }
+        <Footer />
       </div>
     );
   }
