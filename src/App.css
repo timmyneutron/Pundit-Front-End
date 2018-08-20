@@ -26,6 +26,11 @@
   font-size: 18px;
 }
 
+.logged-in-user {
+  color: black;
+  font-size: 18px;
+}
+
 @media screen and (max-width: 576px) {
   .site-subtitle {
     display: none;
@@ -145,7 +150,7 @@ hr.footer-hr {
   padding: 25px 40px;
 }
 
-#balls {
+.login-button-box {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;

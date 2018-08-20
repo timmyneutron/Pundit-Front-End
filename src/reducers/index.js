@@ -84,6 +84,8 @@ function currentUser(state=null, action) {
 	switch (action.type) {
 		case actions.LOGIN :
 			return action.username
+		case actions.LOGOUT :
+			return null
 		default :
 			return state
 	}

@@ -1,9 +1,7 @@
-const remoteURL = "https://protected-sierra-79444.herokuapp.com"
+// const remoteURL = "https://protected-sierra-79444.herokuapp.com"
 const localURL = "http://localhost:3001"
 
 export const api = localURL
-
-const token = "timisawesome"
 
 export const headers = { 'Accept': 'application/json' }
 
@@ -140,6 +138,10 @@ export const login = (username, password) =>
       password
     })
   }).then(res => res.json())
+
+export const logout = () => {
+  localStorage.removeItem('token')
+}
 
 const compare = (post1, post2, option) => {
   switch (option) {
