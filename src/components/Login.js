@@ -15,8 +15,8 @@ class Login extends Component {
 	}
 
 	submitForm = () => {
-		console.log(this.state.formUsername)
-		console.log(this.state.formPassword)
+		const { formUsername, formPassword } = this.state
+		this.props.dispatch(actions.postLogin(formUsername, formPassword))
 	}
 
 	render() {

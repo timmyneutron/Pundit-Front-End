@@ -5,10 +5,7 @@ export const api = localURL
 
 const token = "timisawesome"
 
-export const headers = {
-  'Accept': 'application/json',
-  'Authorization': token
-}
+export const headers = { 'Accept': 'application/json' }
 
 // get all categories
 export const getCategories = () =>
@@ -130,6 +127,19 @@ export const deleteComment = (_id) =>
     headers
   }).then(res => res.json())
 
+// login
+export const login = (username, password) =>
+  fetch(`${api}/login`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username,
+      password
+    })
+  }).then(res => res.json())
 
 const compare = (post1, post2, option) => {
   switch (option) {

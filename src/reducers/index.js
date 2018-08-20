@@ -80,9 +80,19 @@ function showLogin(state=false, action) {
 	}
 }
 
+function currentUser(state=null, action) {
+	switch (action.type) {
+		case actions.LOGIN :
+			return action.username
+		default :
+			return state
+	}
+}
+
 export default combineReducers({
 	categories,
 	posts,
 	comments,
-	showLogin
+	showLogin,
+	currentUser
 })
