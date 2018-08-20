@@ -26,12 +26,12 @@
   font-size: 18px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 576px) {
   .site-subtitle {
     display: none;
   }
   .App {
-    padding-top: 90px;
+    padding-top: 125px;
   }
   .site-title {
     text-align: center
@@ -143,4 +143,10 @@ hr.footer-hr {
   border-radius: 20px;
   box-shadow: 4px 4px 10px grey;
   padding: 25px 40px;
+}
+
+#balls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }

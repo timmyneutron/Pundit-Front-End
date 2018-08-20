@@ -8,6 +8,10 @@ import PostDetail from "./components/PostDetail"
 import './App.css'
 
 class App extends Component {
+  state = {
+    showLogin: false
+  }
+  
   render() {
     return (
       <div className="App">

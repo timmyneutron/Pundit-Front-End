@@ -5,6 +5,7 @@ import OptionsBar from "./OptionsBar"
 import Post from "./Post"
 import AddPost from "./AddPost"
 import Footer from "./Footer"
+import Login from "./Login"
 import * as actions from "../actions"
 import { sort } from "../utils"
 
@@ -44,6 +45,7 @@ class FrontPage extends Component {
 					history={this.props.history}
 					addPost={() => this.setState({ addPost: true })}
 				/>
+				{ this.props.showLogin && <Login clearForm={() => this.setState({ showLogin: false })} />}
 				{this.state.addPost && <AddPost clearForm={() => this.setState({ addPost: false })} />}
 				{posts.map(post => (
 					<Post key={post._id} {...post} />
@@ -56,7 +58,8 @@ class FrontPage extends Component {
 const mapStateToProps = (state, ownProps) => {
 	return {
 		categories: state.categories,
-		posts: state.posts
+		posts: state.posts,
+		showLogin: state.showLogin
 	}
 }
 

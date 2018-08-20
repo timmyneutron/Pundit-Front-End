@@ -8,6 +8,8 @@ export const DELETE_POST = "DELETE_POST"
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS"
 export const RECEIVE_SINGLE_COMMENT = "RECEIVE_SINGLE_COMMENT"
 export const DELETE_COMMENT = "DELETE_COMMENT"
+export const SHOW_LOGIN = "SHOW_LOGIN"
+export const HIDE_LOGIN = "HIDE_LOGIN"
 
 // updates state with new categories list
 export const receiveCategories = (categories) => {
@@ -134,3 +136,15 @@ const deleteCommentLocal = (_id) => {
 export const deleteComment = (_id) => (dispatch) =>
   utils.deleteComment(_id)
   .then(comment => dispatch(deleteCommentLocal(comment._id)))
+
+export const showLogin = () => {
+  return {
+    type: SHOW_LOGIN
+  }
+}
+
+export const hideLogin = () => {
+  return {
+    type: HIDE_LOGIN
+  }
+}

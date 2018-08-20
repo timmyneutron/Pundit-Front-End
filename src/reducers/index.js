@@ -65,8 +65,24 @@ function comments(state=[], action) {
 	}
 }
 
+function showLogin(state=false, action) {
+
+	switch (action.type) {
+
+		case actions.SHOW_LOGIN :
+			return true
+
+		case actions.HIDE_LOGIN :
+			return false
+
+		default :
+			return state
+	}
+}
+
 export default combineReducers({
 	categories,
 	posts,
-	comments
+	comments,
+	showLogin
 })

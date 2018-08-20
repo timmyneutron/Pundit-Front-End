@@ -1,7 +1,7 @@
 const remoteURL = "https://protected-sierra-79444.herokuapp.com"
 const localURL = "http://localhost:3001"
 
-export const api = remoteURL
+export const api = localURL
 
 const token = "timisawesome"
 
