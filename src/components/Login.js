@@ -17,13 +17,19 @@ class Login extends Component {
 	submitForm = () => {
 		const { formUsername, formPassword } = this.state
 		this.props.dispatch(actions.postLogin(formUsername, formPassword))
-		this.props.dispatch(actions.hideLogin())
+	}
+
+	componentDidUpdate = (prevProps) => {
+		if (this.props.loginError === false) {
+			this.hideForm()
+		}
 	}
 
 	render() {
 		return (
 			<div className="post-card">
 				<h4>Login</h4>
+				{ this.props.loginError && <h5 className="form-warning">Invalid username/password</h5> }
 				<FormGroup>
 					<Input
 						type="text"
@@ -47,4 +53,10 @@ class Login extends Component {
 	}
 }
 
-export default connect()(Login)
+const mapStateToProps = (state, ownProps) => {
+	return {
+		loginError: state.loginError
+	}
+}
+
+export default connect(mapStateToProps)(Login)

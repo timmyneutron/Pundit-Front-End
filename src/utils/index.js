@@ -60,6 +60,7 @@ export const editPost = (_id, title, body) =>
     method: 'PUT',
     headers: {
       ...headers,
+      Authorization: localStorage.punditToken,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ title, body })

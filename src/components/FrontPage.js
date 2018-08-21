@@ -44,8 +44,8 @@ class FrontPage extends Component {
 					history={this.props.history}
 					addPost={() => this.setState({ addPost: true })}
 				/>
-				{ this.props.showLogin && <Login clearForm={() => this.setState({ showLogin: false })} />}
-				{this.state.addPost && <AddPost clearForm={() => this.setState({ addPost: false })} />}
+				{ this.props.showLogin && <Login clearForm={() => this.setState({ showLogin: false })} /> }
+				{ this.state.addPost && <AddPost clearForm={() => this.setState({ addPost: false })} /> }
 				{posts.map(post => (
 					<Post key={post._id} {...post} />
 				))}

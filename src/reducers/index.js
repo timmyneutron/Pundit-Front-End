@@ -91,10 +91,24 @@ function currentUser(state=null, action) {
 	}
 }
 
+function loginError(state=null, action) {
+	switch (action.type) {
+		case actions.SHOW_LOGIN :
+			return null
+		case actions.SET_LOGIN_ERROR :
+			return action.status
+		case actions.LOGIN :
+			return false
+		default :
+			return state
+	}
+}
+
 export default combineReducers({
 	categories,
 	posts,
 	comments,
 	showLogin,
-	currentUser
+	currentUser,
+	loginError
 })
