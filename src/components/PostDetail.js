@@ -74,15 +74,17 @@ class PostDetail extends Component {
 							<p className="post-detail-body">{body}</p>
 							<h5>by {author}</h5>
 							<h5>voteScore: {voteScore}</h5>
-							<ButtonGroup className="vote-buttons-group">
-								<Button onClick={() => this.vote("upVote")}>↑</Button>
-								<Button onClick={() => this.vote("downVote")}>↓</Button>
-							</ButtonGroup>
-							<ButtonGroup>
-								<Button onClick={() => this.setState({ addComment: true })}>comment</Button>
-								<Button onClick={this.editPost}>edit</Button>
-								<Button onClick={this.deletePost}>delete</Button>
-							</ButtonGroup>
+							<div className="post-detail-buttons">
+								<ButtonGroup className="vote-buttons-group">
+									<Button onClick={() => this.vote("upVote")}>↑</Button>
+									<Button onClick={() => this.vote("downVote")}>↓</Button>
+								</ButtonGroup>
+								<ButtonGroup>
+									<Button onClick={() => this.setState({ addComment: true })}>comment</Button>
+									<Button onClick={this.editPost}>edit</Button>
+									<Button onClick={this.deletePost}>delete</Button>
+								</ButtonGroup>
+							</div>
 						</div>
 					}
 				</div>
