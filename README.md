@@ -27,12 +27,12 @@ The project is hosted at [http://pundit.timabrahamsen.com](https://pundit.timabr
 
 To view/edit the source code:
 
-  - Install [Yarn](https://yarnpkg.com/lang/en/docs/install)
+  - Install [Yarn](https://yarnpkg.com/lang/en/docs/install) and [NodeJS](https://nodejs.org/en/download/)
   - Download/clone the repository
   - Navigate to the root directory and execute:
 
   ```sh
-  $ yarn install
+  $ npm install
   $ yarn start
   ```
   
