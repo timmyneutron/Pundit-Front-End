@@ -28,13 +28,20 @@ The project is hosted at [http://pundit.timabrahamsen.com](https://pundit.timabr
 To view/edit the source code:
 
   - Install [Yarn](https://yarnpkg.com/lang/en/docs/install)
-  - Download/clone the repository
-  - Navigate to the root directory and execute:
-
+  - Download/clone the repository and navigate to the root directory
+  - check out the nologin branch:
   ```sh
-  $ yarn install
+  $ git checkout nologin
+  ```
+  - install dependencies:
+  ```sh
+  $ npm install
+  ```
+  - start the local server:
+  ```sh
   $ yarn start
   ```
+  The app will automatically open in a web browser at http://localhost:3000.
   
 ## Other Details
 The [back end for this project](https://github.com/timmyneutron/Pundit-Back-End) is based off of [starter code supplied by the instructors at Udacity](https://github.com/udacity/reactnd-project-readable-starter). It maintains the original endpoints from the starter code, with modifications to integrate a MongoDB database.
