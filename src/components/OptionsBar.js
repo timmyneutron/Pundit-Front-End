@@ -67,7 +67,7 @@ class OptionsBar extends React.Component {
                   </DropdownToggle>
                   <DropdownMenu>
                   { sortOptions.map(option => (
-                    (option === parsed.sort || option === "voteScore" && !parsed.sort) ?
+                    (option === parsed.sort || (option === "voteScore" && !parsed.sort)) ?
                     <DropdownItem key={option} className="active" onClick={() => this.sortPosts(option)}>
                       {option}
                     </DropdownItem>

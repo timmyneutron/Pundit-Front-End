@@ -4,7 +4,6 @@ import { Container } from "reactstrap"
 import OptionsBar from "./OptionsBar"
 import Post from "./Post"
 import AddPost from "./AddPost"
-import Footer from "./Footer"
 import * as actions from "../actions"
 import { sort } from "../utils"
 
