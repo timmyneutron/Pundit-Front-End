@@ -1,14 +1,9 @@
-const remoteURL = "https://protected-sierra-79444.herokuapp.com"
+// const remoteURL = "https://protected-sierra-79444.herokuapp.com"
 const localURL = "http://localhost:3001"
 
-export const api = remoteURL
+export const api = localURL
 
-const token = "timisawesome"
-
-export const headers = {
-  'Accept': 'application/json',
-  'Authorization': token
-}
+export const headers = { 'Accept': 'application/json' }
 
 // get all categories
 export const getCategories = () =>
@@ -65,6 +60,7 @@ export const editPost = (_id, title, body) =>
     method: 'PUT',
     headers: {
       ...headers,
+      Authorization: localStorage.punditToken,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ title, body })
@@ -130,6 +126,23 @@ export const deleteComment = (_id) =>
     headers
   }).then(res => res.json())
 
+// login
+export const login = (username, password) =>
+  fetch(`${api}/login`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username,
+      password
+    })
+  }).then(res => res.json())
+
+export const logout = () => {
+  localStorage.removeItem('token')
+}
 
 const compare = (post1, post2, option) => {
   switch (option) {

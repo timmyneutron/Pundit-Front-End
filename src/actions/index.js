@@ -8,6 +8,12 @@ export const DELETE_POST = "DELETE_POST"
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS"
 export const RECEIVE_SINGLE_COMMENT = "RECEIVE_SINGLE_COMMENT"
 export const DELETE_COMMENT = "DELETE_COMMENT"
+export const SHOW_LOGIN = "SHOW_LOGIN"
+export const HIDE_LOGIN = "HIDE_LOGIN"
+export const LOGIN = "LOGIN"
+export const LOGOUT = "LOGOUT"
+export const LOGIN_ERROR = "LOGIN_ERROR"
+export const SET_LOGIN_ERROR = "SET_LOGIN_ERROR"
 
 // updates state with new categories list
 export const receiveCategories = (categories) => {
@@ -134,3 +140,50 @@ const deleteCommentLocal = (_id) => {
 export const deleteComment = (_id) => (dispatch) =>
   utils.deleteComment(_id)
   .then(comment => dispatch(deleteCommentLocal(comment._id)))
+
+// show login form on front page
+export const showLogin = () => {
+  return {
+    type: SHOW_LOGIN
+  }
+}
+
+// hide login form on front page
+export const hideLogin = () => {
+  return {
+    type: HIDE_LOGIN
+  }
+}
+
+export const loginLocal = (username) => {
+  return {
+    type: LOGIN,
+    username
+  }
+}
+
+export const setLoginError = (status) => {
+  return {
+    type: SET_LOGIN_ERROR,
+    status
+  }
+}
+
+export const postLogin = (username, password) => (dispatch) =>
+  utils.login(username, password)
+  .then(response => {
+    console.log(response)
+    if (response.message === 'ok') {
+      localStorage.setItem('token', response.token)
+      return dispatch(loginLocal(response.username))
+    } else {
+      return dispatch(setLoginError(true))
+    }
+  })
+
+export const logout = () => {
+  utils.logout()
+  return {
+    type: LOGOUT
+  }
+}

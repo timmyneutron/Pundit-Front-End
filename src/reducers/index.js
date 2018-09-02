@@ -65,8 +65,50 @@ function comments(state=[], action) {
 	}
 }
 
+function showLogin(state=false, action) {
+
+	switch (action.type) {
+
+		case actions.SHOW_LOGIN :
+			return true
+
+		case actions.HIDE_LOGIN :
+			return false
+
+		default :
+			return state
+	}
+}
+
+function currentUser(state=null, action) {
+	switch (action.type) {
+		case actions.LOGIN :
+			return action.username
+		case actions.LOGOUT :
+			return null
+		default :
+			return state
+	}
+}
+
+function loginError(state=null, action) {
+	switch (action.type) {
+		case actions.SHOW_LOGIN :
+			return null
+		case actions.SET_LOGIN_ERROR :
+			return action.status
+		case actions.LOGIN :
+			return false
+		default :
+			return state
+	}
+}
+
 export default combineReducers({
 	categories,
 	posts,
-	comments
+	comments,
+	showLogin,
+	currentUser,
+	loginError
 })
