@@ -144,3 +144,14 @@ hr.footer-hr {
   box-shadow: 4px 4px 10px grey;
   padding: 25px 40px;
 }
+
+.vote-button-group {
+  margin-right: 20px;
+}
+
+@media (max-width: 400px) {
+  .vote-button-group {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+}
