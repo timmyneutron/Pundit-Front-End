@@ -25,7 +25,7 @@ Concepts explored in this project:
 ## Getting Started
 The project is hosted at [https://pundit.timabrahamsen.com](https://pundit.timabrahamsen.com).
 
-To view/edit the source code:
+To view/edit the source code and serve it locally:
 
   - Install [Yarn](https://yarnpkg.com/lang/en/docs/install) and [NodeJS](https://nodejs.org/en/download/)
   - Download/clone the repository
