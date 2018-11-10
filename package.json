@@ -8,11 +8,12 @@
     "fetch-mock": "^6.5.2",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.4",
+    "query-string": "^6.2.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
+    "react-scripts": "^2.1.1",
     "reactstrap": "^6.3.1",
     "redux": "^4.0.0",
     "redux-mock-store": "^1.5.3",
@@ -23,5 +24,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ]
 }
