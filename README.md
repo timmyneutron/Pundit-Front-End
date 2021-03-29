@@ -33,7 +33,4 @@ To view/edit the source code and serve it locally:
   ```sh
   $ npm install
   $ yarn start
-  ```
-  
-## Other Details
-The [back end for this project](https://github.com/timmyneutron/Pundit-Back-End) is based off of [starter code supplied by the instructors at Udacity](https://github.com/udacity/reactnd-project-readable-starter). It maintains the original endpoints from the starter code, with modifications to integrate a MongoDB database.
+  ``
